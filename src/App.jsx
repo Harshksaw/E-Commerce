@@ -1,16 +1,19 @@
 
 import './App.css'
+import Home from './pages/Home'
 
-import ProductList from './product-list/ProductList'
+
 
 function App() {
 
 
   return (
     <>
+      <div className="App">
 
-    <ProductList/>
-      
+        <Home />
+      </div>
+
     </>
   )
 }

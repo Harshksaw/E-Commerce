@@ -1,7 +1,17 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+
+const items = [
+    { id: 1, title: 'Back End Developer', department: 'Engineering', type: 'Full-time', location: 'Remote' },
+    { id: 2, title: 'Front End Developer', department: 'Engineering', type: 'Full-time', location: 'Remote' },
+    { id: 3, title: 'User Interface Designer', department: 'Design', type: 'Full-time', location: 'Remote' },
+]
+
+
+
+
 
 const sortOptions = [
     { name: 'Most Popular', href: '#', current: true },
@@ -10,13 +20,7 @@ const sortOptions = [
     { name: 'Price: Low to High', href: '#', current: false },
     { name: 'Price: High to Low', href: '#', current: false },
 ]
-const subCategories = [
-    { name: 'Totes', href: '#' },
-    { name: 'Backpacks', href: '#' },
-    { name: 'Travel Bags', href: '#' },
-    { name: 'Hip Bags', href: '#' },
-    { name: 'Laptop Sleeves', href: '#' },
-]
+
 const filters = [
     {
         id: 'color',
@@ -120,7 +124,7 @@ export default function ProductList() {
 
                                             {/* Filters */}
                                             <form className="mt-4 border-t border-gray-200">
-                                                <h3 className="sr-only">Categories</h3>
+                                                {/* <h3 className="sr-only">Categories</h3>
                                                 <ul role="list" className="px-2 py-3 font-medium text-gray-900">
                                                     {subCategories.map((category) => (
                                                         <li key={category.name}>
@@ -129,7 +133,7 @@ export default function ProductList() {
                                                             </a>
                                                         </li>
                                                     ))}
-                                                </ul>
+                                                </ul> */}
 
                                                 {filters.map((section) => (
                                                     <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
@@ -182,7 +186,7 @@ export default function ProductList() {
 
                         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                             <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-                                <h1 className="text-4xl font-bold tracking-tight text-gray-900">New Arrivals</h1>
+                                <h1 className="text-4xl font-bold tracking-tight text-gray-900">Products</h1>
 
                                 <div className="flex items-center">
                                     <Menu as="div" className="relative inline-block text-left">
@@ -251,14 +255,14 @@ export default function ProductList() {
                                 <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                                     {/* Filters */}
                                     <form className="hidden lg:block">
-                                        <h3 className="sr-only">Categories</h3>
+                                        {/* <h3 className="sr-only">Categories</h3>
                                         <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
                                             {subCategories.map((category) => (
                                                 <li key={category.name}>
                                                     <a href={category.href}>{category.name}</a>
                                                 </li>
                                             ))}
-                                        </ul>
+                                        </ul> */}
 
                                         {filters.map((section) => (
                                             <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
@@ -308,7 +312,7 @@ export default function ProductList() {
                                     <div className="lg:col-span-3">
                                         {/* //Product list */}
                                         <div className="bg-white">
-                                            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                                            <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
                                                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">
                                                     Customers also purchased
                                                 </h2>
@@ -342,9 +346,77 @@ export default function ProductList() {
                                                 </div>
                                             </div>
                                         </div>
+                                        {/* Product grid end */}
+
+
+
+
+
+
+
                                     </div>
                                 </div>
                             </section>
+                            {/* {secton of product and filter entd here} */}
+                            <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                                <div className="flex flex-1 justify-between sm:hidden">
+                                    <a
+                                        href="#"
+                                        className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                                    >
+                                        Previous
+                                    </a>
+                                    <a
+                                        href="#"
+                                        className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                                    >
+                                        Next
+                                    </a>
+                                </div>
+                                <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                                    <div>
+                                        <p className="text-sm text-gray-700">
+                                            Showing <span className="font-medium">1</span> to <span className="font-medium">10</span> of{' '}
+                                            <span className="font-medium">97</span> results
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                            <a
+                                                href="#"
+                                                className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                                            >
+                                                <span className="sr-only">Previous</span>
+                                                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+                                            </a>
+                                            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
+                                            <a
+                                                href="#"
+                                                aria-current="page"
+                                                className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            >
+                                                1
+                                            </a>
+                                            <a
+                                                href="#"
+                                                className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                                            >
+                                                2
+                                            </a>
+                                            <a
+                                                href="#"
+                                                className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
+                                            >
+                                                3
+                                            </a>
+                                            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
+                                                ...
+                                            </span>
+                                           
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
                         </main>
                     </div>
                 </div>
