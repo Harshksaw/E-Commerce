@@ -46,10 +46,17 @@ export default function Home() {
 
       {loading ? <Spinner/> :
       posts.length > 0 ?  (
-        <div>
-            {posts.map((post)=>{
-              <div key = {post.id} >{post.id}</div>
-            })}
+        <div className= "flex flex-col justify-center item-center">
+            {posts.map((post)=> (
+              <div key = {post.id}>
+                <h1>{post.title}</h1>
+                {/* <img src={post.image} */}
+                <p>{post.description}</p>
+                
+                <div>
+              </div>
+              
+            ))}
 
         </div>
       )
