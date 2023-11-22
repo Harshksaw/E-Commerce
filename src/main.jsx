@@ -23,7 +23,7 @@ root.render(
   
   <Provider store={store}>
     <App/>
-    <Toaster/>
+    {/* <Toaster/> */}
   </Provider>
 
   </BrowserRouter>

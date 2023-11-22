@@ -1,6 +1,26 @@
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addCart, deleteCart } from "../redux/Slices/CartSlice"
+import  {toast} from "react-hot-toast";
+
+const  Product =({post})=> {
+    const cart = useSelector((state)=> state.cart)
+
+    console.log("cart",cart)
+    const dispatch = useDispatch()
 
 
-export default function Product({post}) {
+    const AddtoCart =()=>{
+        dispatch(addCart(post));
+        toast.success("Added")
+
+    }
+    const removeFromCart=()=>{
+        dispatch(deleteCart(post));
+        toast.error("deleted")
+
+    }
+
   return (
     <div>
 
@@ -12,18 +32,24 @@ export default function Product({post}) {
         <div>
             {post.description}
         </div>
+        <div className="size-10">
+            <img src={`${post.image}`}  size = {20} />
+        </div>
         <div>
             {post.price}
         </div>
         <div>
-            <img src={`${post.image}`} />
-        </div>
-        <div>
-            <button>
-                {selected ? <p>Remove Item</p> : <p>Add to cart</p> }
-            </button>
+                {
+                    cart.some((p)=> p.id == post.id) ?
+                        (<button onClick={removeFromCart}> Remove Item</button>) :
+                        (<button onClick={AddtoCart}> Addd Item</button>)
+                    
+                }
+
+
         </div>
       
     </div>
   )
 }
+export default Product

@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
-import {FcDeleteDatabase} from "react-icons/Fc"
-export default function CartItem({item , itemIndex}) {
+import {FcDeleteDatabase} from "react-icons/fc"
+import { useDispatch } from "react-redux";
+import { deleteCart } from "../redux/Slices/CartSlice";
+
+const  CartItem=({item}) =>{
+
+    const dispatch = useDispatch()
+
+    const removeFromCart = ()=>{
+
+        dispatch(deleteCart(item.id))
+    }
     return (
         <div>
             <div>
@@ -11,13 +21,14 @@ export default function CartItem({item , itemIndex}) {
                 <h1>{item.name}</h1>
                 <p>{item.description} </p>
                 <p>{item.price} </p>
-                <Link to="/delete">
-                    <FcDeleteDatabase/>
+            <div onClick={removeFromCart}>
 
+                    <FcDeleteDatabase/>
+            </div>
 
 
                 
-                </Link>
+
             </div>
 
 
@@ -25,3 +36,4 @@ export default function CartItem({item , itemIndex}) {
     )
     
 }
+export default CartItem;

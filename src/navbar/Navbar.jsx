@@ -13,7 +13,7 @@ function Navbar() {
 
             <div className="flex flex-row">
                 <div>
-                    <NavLink to="/home">
+                    <NavLink to="/">
                         <p>Home</p>
                     </NavLink>
 
