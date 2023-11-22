@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import logo from "../../public/assets/OIP.jpeg";
+import logo from "../assets/OIP.jpeg"
 
 function Navbar() {
     return (
