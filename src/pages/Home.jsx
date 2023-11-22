@@ -30,7 +30,7 @@ export default function Home() {
       {loading ? 
         <Spinner />
        : posts.length > 0 ? (
-        <div className="flex flex-col justify-center item-center">
+        <div className="grid grid-cols-2 md:grid-cols-4  max-w-6xl mx-auto space-x-10 space-y-5 min-h-[80vh]  p-5">
           {posts.map((post) => (
            <Product key={post.id} post = {post}/>
           ))}

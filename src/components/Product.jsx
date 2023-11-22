@@ -22,18 +22,18 @@ const  Product =({post})=> {
     }
 
   return (
-    <div>
+    <div className="flex flex-col item-center justify-between">
 
         <div>
 
-            <p>{post.title}</p>
+            <p>{post.title.split(" ").slice(0,3).join(" ")+ "..."}</p>
 
         </div>
-        <div>
-            {post.description}
+        <div className="">
+            {post.description.split(" ").slice(0,10).join(" ")+ "..."}
         </div>
         <div className="size-10">
-            <img src={`${post.image}`}  size = {20} />
+            <img src={post.image}  size = {20} />
         </div>
         <div>
             {post.price}
