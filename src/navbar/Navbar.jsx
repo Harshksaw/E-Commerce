@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import logo from "../assets/OIP.jpeg";
 
 function Navbar() {
-    const {cart }= useSelector((state) => state)
+    const cart = useSelector((state) => state.cart)
 
   return (
     <div>

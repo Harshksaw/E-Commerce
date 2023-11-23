@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"; // Import Link component
 import CartItem from "../components/CartItem";
 
 const Cart = () => {
-  const { cart } = useSelector((state) => state);
-  console.log(cart.length); // Corrected typo
+  const  cart = useSelector((state) => state.cart);
+
   const [totalamount, setTotalamount] = useState(0);
 
   useEffect(() => {
@@ -13,37 +13,21 @@ const Cart = () => {
   }, [cart]);
 
   return (
-    <div className="flex flex-col h-screen">
+
+    <div className="container mx-auto mt-8">
       {cart.length > 0 ? (
+
         
-        <div className="border border-black mt-5 p-2 flex flex-row ">
+          <div className="flex  flex-col items-center justify-center mx-11 max-h-[60vh] overflow-y-auto">
+          {cart.map((cartItem) => (
+            <CartItem key={cartItem.id} item={cartItem} index={cartItem.id}/>
+            
+          ))}
 
-            <div className="w-1/2 ml-20 outline-black  overflow-y-auto max-h-80 min-h-60">
-
-              {cart.map((item, index) => {
-                return <CartItem key={item.id} item={item} itemIndex={index} />;
-              })}
-
-
-
-            </div>
-
-            <div className="w-1/3 outline-black mr-5">
-              {/* "Summary" section */}
-              <div className="mb-2">
-                <div>Your cart</div>
-                <div>Summary</div>
-                <p>{cart.length}</p>
-              </div>
-              <div>
-                <p>Total Length: {cart.length}</p>
-                <p>Total amount: {totalamount}</p>
-                <button>Checkout now</button>
-              </div>
-
-          </div>
         </div>
 
+        
+    
 
 
 
@@ -64,6 +48,8 @@ const Cart = () => {
         </div>
       )}
     </div>
+
+
   );
 };
 
