@@ -14,17 +14,17 @@ const  CartItem=({item}) =>{
     return (
         <div>
             <div>
-                <img src={item.image} alt="" />
+                {/* <img src={item.image} alt="" /> */}
             </div>
 
             <div>
                 <h1>{item.name}</h1>
                 <p>{item.description} </p>
                 <p>{item.price} </p>
-            <div onClick={removeFromCart}>
+                <div onClick={removeFromCart}>
 
                     <FcDeleteDatabase/>
-            </div>
+                </div>
 
 
                 
