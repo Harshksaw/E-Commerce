@@ -18,7 +18,8 @@ const Cart = () => {
       {cart.length > 0 ? (
 
         
-          <div className="flex  flex-col items-center justify-center mx-11 max-h-[60vh] overflow-y-auto">
+          <div className="flex  flex-col items-center justify-center px-5 
+          mt-10 mx-5 border border-black">
           {cart.map((cartItem) => (
             <CartItem key={cartItem.id} item={cartItem} index={cartItem.id}/>
             
