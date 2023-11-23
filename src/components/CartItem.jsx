@@ -12,15 +12,15 @@ const  CartItem=({item}) =>{
         dispatch(deleteCart(item.id))
     }
     return (
-        <div>
-            <div>
-                {/* <img src={item.image} alt="" /> */}
+        <div className="border outline-black flex flex-row ">
+            <div className="h-[100px]">
+                <img src={item.image} alt={item.name} className="w-full h-full" />
             </div>
 
             <div>
-                <h1>{item.name}</h1>
-                <p>{item.description} </p>
-                <p>{item.price} </p>
+                <h1 className="font-bold text-gray-700 text-lg text-left truncate w-40 mt-1">{item.name}</h1>
+                <p className="w-40 text-gray-500 font-normal text-[10px] text-left">{item.description} </p>
+                <p className="text-green-600 font-semibold">{item.price} </p>
                 <div onClick={removeFromCart}>
 
                     <FcDeleteDatabase/>
