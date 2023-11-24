@@ -10,38 +10,35 @@ const item = ({ item }) => {
     dispatch(deleteCart(item.id));
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t py-5 mt-5" key={item.id}>
-    <div className="flex items-center justify-center md:col-span-1">
-      <img src={item.image} alt={item.name} className="w-full sm:w-16 md:w-[100px] lg:w-[180px] object-cover h-48 sm:h-18 md:h-[150px] lg:h-[180px] mr-4" />
-      <div>
-        <h3 className="font-semibold">{item.name}</h3>
-        <p className="text-gray-500">{item.desc}</p>
-        <button
-          // onClick={() => handleRemoveFromCart(item)}
-          className="text-gray-500 hover:text-black focus:outline-none"
-        >
-          Remove
-        </button>
-      </div>
-    </div>
-    <div className="text-center md:col-span-1">${item.price}</div>
-    <div className="flex items-center md:col-span-1">
-      <button
-        onClick={() => handleDecreaseCart(item)}
-        className="bg-gray-200 text-gray-600 px-2 py-1 rounded-l"
-      >
-        -
-      </button>
-      <div className="px-4">{item.cartQuantity}</div>
-      <button
-        onClick={() => handleAddToCart(item)}
-        className="bg-gray-200 text-gray-600 px-2 py-1 rounded-r"
-      >
-        +
-      </button>
-    </div>
-    <div className="text-right md:col-span-1">${item.price * item.cartQuantity}</div>
-  </div>
+
+  <div className="md:flex items-center mt-14 py-8 border-t border-gray-200">
+
+                                <div className="w-1/4">
+                                    <img src={item.image} alt className="w-full h-full object-center object-cover" />
+                                </div>
+
+                                <div className="md:pl-3 md:w-3/4">
+                                    <p className="text-xs leading-3 text-gray-800 md:pt-0 pt-4">{item.category}</p>
+                                    <div className="flex items-center justify-between w-full pt-1">
+                                        <p className="text-base font-black leading-none text-gray-800">{item.title}</p>
+                                        <select className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
+                                            <option>01</option>
+                                            <option>02</option>
+                                            <option>03</option>
+                                        </select>
+                                    </div>
+                                    <p className="text-xs leading-3 text-gray-600 pt-2">Rating : {item.rating.rate}</p>
+                                    <p className="w-96 text-xs leading-3 text-gray-600">{item.description}</p>
+                                    <p className="text-xs leading-3 text-gray-600 py-4">Left : {item.rating.count}</p>
+                                    <div className="flex items-center justify-between pt-5 pr-6">
+                                        <div className="flex itemms-center">
+                                            <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                                            <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                                        </div>
+                                        <p className="text-base font-black leading-none text-gray-800">${}</p>
+                                    </div>
+                                </div>
+                            </div>
   
   );
 };
