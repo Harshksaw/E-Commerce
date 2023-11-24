@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addCart, deleteCart } from "../redux/Slices/CartSlice"
 import { toast } from "react-hot-toast";
@@ -17,10 +17,14 @@ const Product = ({ post }) => {
 
   }
   const removeFromCart = () => {
-    dispatch(deleteCart(post));
+    dispatch(deleteCart(post.id));
     toast.error("deleted")
 
   }
+    const isItemInCart = cart.some((p) => p.id === post.id);
+  useEffect(()=>{
+
+  },[isItemInCart])
 
   return (
 
@@ -47,15 +51,15 @@ const Product = ({ post }) => {
         </div>
 
         <div>
-          {cart.some((p) => p.id == post.id) ? (
-            <button className="text-gray-700 border-3 border-gray-700 rounded-full font-semibold text-[12px] p-1 px-3 uppercase hover:bg-gray-800 hover:text-white" onClick={removeFromCart}>
-              Remove Item
-            </button>
-          ) : (
-            <button className="text-gray-700 border-3 border-gray-700 rounded-full font-semibold text-[12px] p-1 px-3 uppercase hover:bg-gray-800 hover:text-white" onClick={AddtoCart}>
-              Add Item
-            </button>
-          )}
+        {isItemInCart ? (
+        <button className="text-gray-700 border-3 border-gray-700 rounded-full font-semibold text-[12px] p-1 px-3 uppercase hover:bg-gray-800 hover:text-white" onClick={removeFromCart}>
+          Remove Item
+        </button>
+      ) : (
+        <button className="text-gray-700 border-3 border-gray-700 rounded-full font-semibold text-[12px] p-1 px-3 uppercase hover:bg-gray-800 hover:text-white" onClick={AddtoCart}>
+          Add Item
+        </button>
+      )}
         </div>
       </div>
     </div>

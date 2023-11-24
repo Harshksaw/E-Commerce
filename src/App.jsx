@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home"
 import Navbar from "./navbar/Navbar"
 import Cart from './pages/Cart';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Navbar/>
       </div>
 
+        <Toaster/>
       <Routes>
 
         <Route path="/" element={<Home/>} />
