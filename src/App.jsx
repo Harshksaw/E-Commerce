@@ -1,8 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from "./pages/Home"
-import Navbar from "./navbar/Navbar"
-import Cart from './pages/Cart';
+
 import { Toaster } from 'react-hot-toast';
+
+import Cart from './Customer/pages/Cart';
+import Navbar from './Customer/components/navbar/Navbar';
+import Home from './Customer/pages/Home';
 
 function App() {
   return (

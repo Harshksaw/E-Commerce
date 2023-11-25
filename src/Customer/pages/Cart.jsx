@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"; // Import Link component
 import CartItem from "../components/CartItem";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../components/navbar/Navbar";
+
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -20,6 +21,7 @@ const Cart = () => {
   return (
     <>
     {/* <Navbar/> */}
+    <Navbar/>
  
 
       <div>
