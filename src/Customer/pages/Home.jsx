@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Product from "../components/Product";
 import Spinner from "../components/Spinner";
+import MainCarousel from "../components/Carousel/MainCarousel";
+
+import HomeSectionCarousel from "../components/HomeSectionCarousel/HomeSectionCarousel";
 
 export default function Home() {
   const API_URl = "https://fakestoreapi.com/products";
@@ -26,6 +29,10 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+    <MainCarousel/>
+    <HomeSectionCarousel/>
+
     <div>
       {loading ? 
         <Spinner />
@@ -41,5 +48,6 @@ export default function Home() {
         </div>
       )}
     </div>
+    </>
   );
 }

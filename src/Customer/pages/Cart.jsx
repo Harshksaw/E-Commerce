@@ -20,8 +20,7 @@ const Cart = () => {
 
   return (
     <>
-    {/* <Navbar/> */}
-    <Navbar/>
+
  
 
       <div>
