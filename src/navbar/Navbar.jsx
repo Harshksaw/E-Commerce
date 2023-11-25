@@ -15,11 +15,20 @@ function Navbar() {
           </div>
         </NavLink>
 
-        <div className="flex items-center font-medium text-slate-300 mr-5 space-x-5">
-          <NavLink to="/" className="mx-4">
+        <div className="flex items-center  juistify-between font-medium text-slate-300 mr-5 space-x-5">
+          {/* <NavLink to="/" className="mx-4">
             Home
-          </NavLink>
+          </NavLink> */}
+          <ul className="flex flex-row justify-between items-center space-x-5"> 
 
+            <li>Shop</li>
+            <li>Men</li>
+            <li>Women</li>
+            <li>Kids</li>
+          </ul>
+        </div>
+
+        <div>
           <NavLink to="/cart" className="flex items-center">
             <div className="relative">
 
