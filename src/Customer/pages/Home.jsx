@@ -4,7 +4,8 @@ import Spinner from "../components/Spinner";
 import MainCarousel from "../components/Carousel/MainCarousel";
 
 import HomeSectionCarousel from "../components/HomeSectionCarousel/HomeSectionCarousel";
-
+import Footer from "../components/Footer"
+import logocompany from "../../assets/OIP.jpeg"
 export default function Home() {
   const API_URl = "https://fakestoreapi.com/products";
   const [loading, setloading] = useState(false);
@@ -52,6 +53,8 @@ export default function Home() {
         </div>
       )}
     </div>
+
+      <Footer logo={logocompany}/>
     </>
   );
 }

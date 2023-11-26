@@ -13,11 +13,11 @@ import kurtaPage1 from "../../../assets/ecommerce-products-data-master/Kurta/kur
 
 
 
-const HomeSectionCarousel = ({sectionname}) => {
-    const [activeIndex , setActiveIndex]= useState(0)
-    
-    const slidePrev = ()=>{ setActiveIndex(activeIndex - 1)}
-    const slideNext = ()=>{ setActiveIndex(activeIndex + 1)}
+const HomeSectionCarousel = ({ sectionname }) => {
+    const [activeIndex, setActiveIndex] = useState(0)
+
+    const slidePrev = () => { setActiveIndex(activeIndex - 1) }
+    const slideNext = () => { setActiveIndex(activeIndex + 1) }
 
 
     const responsive = {
@@ -32,19 +32,20 @@ const HomeSectionCarousel = ({sectionname}) => {
             // itemsFit: 'contain'
         },
     };
+    const syncActiveIndex = ({ item }) => setActiveIndex(item)
 
-    const items = kurtaPage1.slice(0,8).map((product, idx) => <HomeSectionCard  product ={product} key = {idx} />)     
+    const items = kurtaPage1.map((item, idx) => <HomeSectionCard product={item} key={idx} />)
 
 
     return (
         <div className=" border">
-            <h2 className = "text-2xl font-extrabold text-gray-900 capitalize text-decoration-blue text-underline">{sectionname}</h2>
+            <h2 className="text-2xl font-extrabold text-gray-900 capitalize text-decoration-blue text-underline">{sectionname}</h2>
             <div className="relative p-10 border  flex flex-row justify-center items-center">
-                {activeIndex !== 0  && <Button
+                {activeIndex !== 0 && <Button
                     variant="contained"
                     className="z-20 bg-blue-200"
                     onClick={slidePrev}
-                    
+
                     sx={{
                         position: 'absolute',
                         top: '8rem',  // Adjust this value
@@ -54,9 +55,9 @@ const HomeSectionCarousel = ({sectionname}) => {
                     }}
                     aria-label="previous"
                 >
-                    <KeyboardArrowLeftIcon sx={{ color: '#0000FF'}} />
-                </Button> }
-              
+                    <KeyboardArrowLeftIcon sx={{ color: '#0000FF' }} />
+                </Button>}
+
 
                 <AliceCarousel
                     items={items}
@@ -65,29 +66,29 @@ const HomeSectionCarousel = ({sectionname}) => {
 
                     responsive={responsive}
                     disableDotsControls
-                    onSlideChange={setActiveIndex}
+                    onSlideChange={syncActiveIndex}
                     activeIndex={activeIndex}
                 />
-                  {activeIndex !== items.length -5  &&
-                  <Button 
-                  onClick={slideNext}
+                {activeIndex !== items.length - 5 &&
+                    <Button
+                        onClick={slideNext}
 
-                    variant="contained"
-                    className="z-25 bg-white"
-                   
-                    sx={{
-                        position: 'absolute',
-                        top: '9rem',  // Adjust this value
-                        left: 0,    // or right: 0 depending on which button
-                        transform: 'translateX(-50%)',
-                        bgcolor: 'white',
-                    }}
-                    aria-label="next"
-                >
-                    <KeyboardArrowRightIcon sx={{ color: 'blue'  }} />
-                </Button>
+                        variant="contained"
+                        className="z-25 bg-white"
+
+                        sx={{
+                            position: 'absolute',
+                            top: '9rem',  // Adjust this value
+                            left: 0,    // or right: 0 depending on which button
+                            transform: 'translateX(-50%)',
+                            bgcolor: 'white',
+                        }}
+                        aria-label="next"
+                    >
+                        <KeyboardArrowRightIcon sx={{ color: 'blue' }} />
+                    </Button>
                 }
-              
+
             </div>
         </div>
     )
