@@ -1,4 +1,4 @@
-export const kurtaPage1=[
+const kurtaPage1=[
     {
         "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/ethnic-set/b/4/m/m-na-kurta-set-010-rama-woxen-original-imagzkgg8mnyxmcg.jpeg?q=70",
         "brand": "WOXEN",
@@ -52,7 +52,7 @@ export const kurtaPage1=[
     {
         "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/ethnic-set/c/t/z/l-vj-1-maroon-dupatta-set-prisca-original-imagb7evryurffsz-bb.jpeg?q=70",
         "brand": "PRISCA",
-        "title": "Women Kurta and Pant Set Viscose Rayon",
+        "title": "1 Women Kurta and Pant Set Viscose Rayon",
         "color": "",
         "selling_price": "₹779",
         "price": "₹1,299",
@@ -72,7 +72,7 @@ export const kurtaPage1=[
     {
         "image": "https://rukminim1.flixcart.com/image/612/612/xif0q/ethnic-set/j/t/a/xl-mk-01-peech-marudhara-original-imagzwze8huxjfgf.jpeg?q=70",
         "brand": "Marudhara",
-        "title": "Women Kurta and Pant Set Pure Cotton",
+        "title": " 2 Women Kurta and  222Pant Set Pure Cotton",
         "color": "",
         "selling_price": "₹499",
         "price": "₹1,999",
@@ -122,7 +122,7 @@ export const kurtaPage1=[
     {
         "image": "https://rukminim1.flixcart.com/image/612/612/l3t2fm80/ethnic-set/u/2/1/l-jk173-jai-kurties-original-imageugcbqk36gvg.jpeg?q=70",
         "brand": "Jai Kurties",
-        "title": "Women Kurta and Pant Set Viscose Rayon",
+        "title": "Women Kurta and Pant Set Viscose Rayon 22",
         "color": "",
         "selling_price": "₹476",
         "price": "₹1,999",
@@ -132,7 +132,7 @@ export const kurtaPage1=[
     {
         "image": "https://rukminim1.flixcart.com/image/612/612/l47cu4w0/ethnic-set/m/o/c/xxl-noorimauve-stylum-original-imagf5sybg5a9kt6.jpeg?q=70",
         "brand": "Stylum",
-        "title": "Women Kurta and Pant Set Cotton Blend",
+        "title": " 22Women Kurta and Pant Set Cotton Blend 222",
         "color": "",
         "selling_price": "₹769",
         "price": "₹2,499",
@@ -142,7 +142,7 @@ export const kurtaPage1=[
     {
         "image": "https://rukminim1.flixcart.com/image/612/612/ku8pbbk0/kurta/9/k/r/xxl-ac2-danevart-original-imag7esftepgq4fm.jpeg?q=70",
         "brand": "NEW STYLISH",
-        "title": "Women Kurta and Palazzo Set Cotton Blend",
+        "title": "Women Kurta and Palazzo Set Cotton Blend 222",
         "color": "",
         "selling_price": "₹492",
         "price": "₹1,999",
@@ -400,3 +400,4 @@ export const kurtaPage1=[
         "size": ""
     }
 ]
+export default kurtaPage1;

@@ -6,10 +6,20 @@ import Button from '@material-ui/core/Button';
 
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { useState } from 'react';
+
+import kurtaPage1 from "../../../assets/ecommerce-products-data-master/Kurta/kurta"
 
 
 
-const HomeSectionCarousel = () => {
+
+const HomeSectionCarousel = ({sectionname}) => {
+    const [activeIndex , setActiveIndex]= useState(0)
+    
+    const slidePrev = ()=>{ setActiveIndex(activeIndex - 1)}
+    const slideNext = ()=>{ setActiveIndex(activeIndex + 1)}
+
+
     const responsive = {
         0: {
             items: 1
@@ -18,54 +28,65 @@ const HomeSectionCarousel = () => {
             items: 2
         },
         1024: {
-            items: 5,
+            items: 4,
             // itemsFit: 'contain'
         },
     };
 
-    const items = [1, 1, 1, 1].map((item) => <HomeSectionCard />)
+    const items = kurtaPage1.slice(0,8).map((product, idx) => <HomeSectionCard  product ={product} key = {idx} />)     
+
 
     return (
-        <div className=" border border-black ">
+        <div className=" border">
+            <h2 className = "text-2xl font-extrabold text-gray-900 capitalize text-decoration-blue text-underline">{sectionname}</h2>
             <div className="relative p-10 border  flex flex-row justify-center items-center">
-                <Button
+                {activeIndex !== 0  && <Button
                     variant="contained"
-                    className="z-20"
+                    className="z-20 bg-blue-200"
+                    onClick={slidePrev}
+                    
                     sx={{
                         position: 'absolute',
                         top: '8rem',  // Adjust this value
                         left: 0,    // or right: 0 depending on which button
                         transform: 'translateY(-50%)',
-                        bgcolor: 'blue',
+                        bgcolor: '#0000FF',
                     }}
                     aria-label="previous"
                 >
-                    <KeyboardArrowLeftIcon sx={{ color: 'blue' }} />
-                </Button>
+                    <KeyboardArrowLeftIcon sx={{ color: '#0000FF'}} />
+                </Button> }
               
 
                 <AliceCarousel
                     items={items}
                     disableButtonsControls
-                    autoPlay
-                    infinite
+                    // autoPlay
+
                     responsive={responsive}
                     disableDotsControls
+                    onSlideChange={setActiveIndex}
+                    activeIndex={activeIndex}
                 />
-                  <Button
+                  {activeIndex !== items.length -5  &&
+                  <Button 
+                  onClick={slideNext}
+
                     variant="contained"
-                    className="z-25"
+                    className="z-25 bg-white"
+                   
                     sx={{
                         position: 'absolute',
                         top: '9rem',  // Adjust this value
                         left: 0,    // or right: 0 depending on which button
                         transform: 'translateX(-50%)',
-                        bgcolor: 'blue',
+                        bgcolor: 'white',
                     }}
-                    aria-label="previous"
+                    aria-label="next"
                 >
                     <KeyboardArrowRightIcon sx={{ color: 'blue'  }} />
                 </Button>
+                }
               
             </div>
         </div>
