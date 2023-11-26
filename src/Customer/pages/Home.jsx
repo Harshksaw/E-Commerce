@@ -31,7 +31,11 @@ export default function Home() {
   return (
     <>
     <MainCarousel/>
+    <div className="space-y-10 py-20 ">
+
     <HomeSectionCarousel/>
+    <HomeSectionCarousel/>
+    </div>
 
     <div>
       {loading ? 
