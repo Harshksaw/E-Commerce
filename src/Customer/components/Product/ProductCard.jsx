@@ -5,10 +5,15 @@ const ProductCard = ({item}) => {
     return (
         <div className='productCard w-[15rem] m-3 transition-all cursor-pointer'>
             <div className=''>
-                <img className='h-full w-full object-cover object-left-top '
-                    src="https://rukminim1.flixcart.com/image/612/612/l5h2xe80/kurta/x/6/n/xl-kast-tile-green-majestic-man-original-imagg4z33hu4kzpv.jpeg?q=70"
+
+                <img className='h-[25rem] w-full object-cover object-left-top '
+                
+                    src={item.imageUrl}
+                    
 
                     alt=""/>
+
+                    
 
 
 
@@ -17,12 +22,12 @@ const ProductCard = ({item}) => {
             <div className='textPart bg-white p-3 '>
                 <div>
                     <p className='font-bold opacity-60'> {item.brand}</p>
-                    <p className=''>Causal pfff sleeves solde</p>
+                    <p className=''>{item.description}</p>
                 </div>
                 <div className='flex item-center space-x-2'>
-                    <p className = "bold ">$30 </p>
-                    <p className='line-through '> $100 </p>
-                    <p className = "text-green-400">20% off</p>
+                    <p className = "bold ">${item.discountedPrice} </p>
+                    <p className='line-through '> ${item.price} </p>
+                    <p className = "text-green-400">{item.discountPersent} off</p>
 
                 </div>
 
