@@ -9,6 +9,7 @@ import { store } from './Customer/redux/Store';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import React from '@heroicons/react';
 
 
 
@@ -17,14 +18,19 @@ const root = createRoot(document.getElementById('root'));
 
 
 root.render(
-  <BrowserRouter>
 
 
-  
-  <Provider store={store}>
-    <App/>
 
-  </Provider>
+    <BrowserRouter>
 
-  </BrowserRouter>
+
+
+      <Provider store={store}>
+        <App />
+
+      </Provider>
+
+    </BrowserRouter>
+
+
 );
