@@ -7,6 +7,7 @@ import Navbar from './Customer/components/navbar/Navbar';
 import Home from './Customer/pages/Home';
 import Product from './Customer/components/Product/Product';
 import ProductDetails from './Customer/components/Productdetails/ProductDetails';
+import Footer from './Customer/components/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/cart" element={<Cart/>} />
 
       </Routes>
+      <Footer/>
     </div>
   );
 }
