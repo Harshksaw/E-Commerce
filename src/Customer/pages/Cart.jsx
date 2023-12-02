@@ -74,7 +74,10 @@ const Cart = () => {
                                         <p className="text-2xl font-bold leading-normal text-right text-gray-800 px-3">{total}</p>
                                     </div>
                                     <button onClick={() => setShow(!show)} className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white">
+                                      <Link to ="/checkout">
+
                                         Checkout
+                                      </Link>
                                     </button>
                                 </div>
                             </div>
