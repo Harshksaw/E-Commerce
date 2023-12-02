@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import { Grid, LinearProgress, Box } from '@mui/material'
 import ProductReviewCard from './ProductReviewCard';
 import Product from '../Product/Product';
+import { mens_kurta } from '../../../assets/ecommerce-products-data-master/Men/men_kurta';
+import HomeSectionCard from '../HomeSectionCarousel/HomeSectionCard';
 
 
 const product = {
@@ -381,7 +383,11 @@ export default function ProductDetails() {
         </section>
                     {/* {Similar Product} */}
         <section className='pt-10'>
-          <h1>Similar Product</h1>
+          <h1 className='py-5 text-xl font-bold'>Similar Product</h1>
+                    <div className='flex flex-wrap space-y-5'>
+
+                    {mens_kurta.map((item, idx) => <HomeSectionCard product={item} key={idx} />)}
+                    </div>
 
         </section>
 

@@ -23,7 +23,7 @@ const Cart = () => {
 
  
 
-      <div>
+      <div className="container  mt-8">
         {cart.length>0 ? (
 
         

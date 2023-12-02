@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCart } from "../redux/Slices/CartSlice";
 import { increment, decrement } from "../redux/Slices/CounterSlice";
 
+
+
+
 const item = ({ item }) => {
   const dispatch = useDispatch();
   const value = useSelector((state) => state.counter.value);
@@ -50,8 +53,8 @@ const item = ({ item }) => {
             <button
               className="py-2 px-3 border border-gray-200 focus:outline-none"
               onClick={handleIncrement}
-            >
-              +
+            > 
+            +
             </button>
           </div>
         </div>
@@ -69,7 +72,7 @@ const item = ({ item }) => {
             <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
               Add to favorites
             </p>
-            <button className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer" 
+            <button className="text-xl leading-3 underline text-red-500 pl-5 cursor-pointer " 
             onClick={()=> dispatch(deleteCart(item.id))} >
               Remove
             </button>
