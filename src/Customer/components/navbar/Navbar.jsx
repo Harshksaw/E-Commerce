@@ -2,7 +2,7 @@ import logoCompany from "../../../assets/OIP.jpeg"
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 import navigation from "./NavbarData"
 import { useSelector } from 'react-redux';
@@ -15,6 +15,8 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false)
   const [loggedIn  , setLoggedIn] = useState(true)
+
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart)
 

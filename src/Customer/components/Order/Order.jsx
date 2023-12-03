@@ -1,5 +1,6 @@
 
 import { Grid } from '@mui/material';
+import OrderCard from './OrderCard';
 
 const Order = () => {
 
@@ -13,7 +14,7 @@ const Order = () => {
 
     ]
     return (
-        <div>
+        <div className='px:5 lg:px-20'>
             <Grid container sx={{ justifyContent: "space-between" }}>
                 <Grid item xs={2.5}>
                     <div className='h-auto shadow-lg bg-white p-5 sticky top-5'>
@@ -26,8 +27,8 @@ const Order = () => {
 
                             {orderStatus.map(option)=>(
                             <div className='flex items-center'>
-                                <input type="checkbox" 
-                                defaultValue={option.value} className='h-4 w-4 border-gray-100  text-indigo-300 focus:ring-indigo-500' />
+                                <input type="checkbox"
+                                    defaultValue={option.value} className='h-4 w-4 border-gray-100  text-indigo-300 focus:ring-indigo-500' />
                                 <label className='ml-3 text-sm text-gray-600 ' htmlFor={option.value} >
                                     {option.label}
                                 </label>
@@ -44,6 +45,14 @@ const Order = () => {
                 </Grid>
 
                 <Grid item xs={9}>
+                    <div className='space-y-5'>
+
+                    {[1,1,1,1,1].map((item) =>(
+
+                        <OrderCard />
+                        )
+                        )}
+                    </div>
 
                 </Grid>
             </Grid>
