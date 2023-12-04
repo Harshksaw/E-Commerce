@@ -54,7 +54,7 @@ export default function Home() {
       )}
     </div>
 
-      <Footer logo={logocompany}/>
+      {/* <Footer logo={logocompany}/> */}
     </>
   );
 }
