@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 const addressSchema = new mongoose.Schema({
@@ -26,15 +25,14 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    user:{
-        type:moongoose.Schema.ObjectId,
+    user: {
+        type: mongoose.Schema.ObjectId,  // Corrected typo here
         ref: "users"
     },
     mobile: {
         type: String,
         required: true
     }
-    
 });
 
 const Address = mongoose.model('addresses', addressSchema);

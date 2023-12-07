@@ -8,12 +8,12 @@ const orderSchema = new mongoose.Schema({
     orderItems: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'OrderItems',
+            ref: 'orderItems', // Corrected to lowercase 'orderItems'
         }
     ],
-    orderData: {
+    orderDate: {
         type: Date,
-        required:true,
+        required: true,
         default: Date.now,
     },
     deliveryDate: {
@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
     },
     shippingAddress: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"addresses",
+        ref: "addresses",
     },
     paymentDetails: {
         paymentMethod: {
@@ -29,7 +29,7 @@ const orderSchema = new mongoose.Schema({
         },
         transactionId: {
             type: String,
-            default:"PENDING"
+            default: "PENDING",
         }
     },
     totalPrice: {
@@ -47,7 +47,7 @@ const orderSchema = new mongoose.Schema({
     orderStatus: {
         type: String,
         required: true,
-        default:"PENDING",
+        default: "PENDING",
     },
     totalItem: {
         type: Number,
@@ -55,13 +55,9 @@ const orderSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now(),
+        default: Date.now,
     },
 });
-    
-    
-    
-
 
 const Order = mongoose.model('orders', orderSchema);
 

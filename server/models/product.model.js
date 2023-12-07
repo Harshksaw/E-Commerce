@@ -35,7 +35,7 @@ const productSchema = new mongoose.Schema({
         // required: true
     },
     sizes: [{
-        type: [type: String],
+        type: { type: String },
         quantity: { type: Number }
     }],
     imageUrl: {
@@ -55,7 +55,7 @@ const productSchema = new mongoose.Schema({
 
     numRatings: {
         type: Number,
-        d
+        
     },
     category: {
         type: String,
