@@ -1,80 +1,96 @@
-import { Link } from "react-router-dom";
+import * as React from "react";
+import { Grid, TextField, Button, Box, Snackbar, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, login } from "../../../Redux/Auth/Action";
+import { useEffect } from "react";
+import { useState } from "react";
 
-export default function Login() {
-    return (
-        <>
-   
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    <img
-                        className="mx-auto h-10 w-auto"
-                        src="../../../assets/OIP.jpeg"
-                        alt="Your Company"
-                    />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Login in to your account
-                    </h2>
-                </div>
+export default function LoginUserForm({ handleNext }) {
+  const navigate = useNavigate();
+  const dispatch=useDispatch();
+  const jwt=localStorage.getItem("jwt");
+  const [openSnackBar,setOpenSnackBar]=useState(false);
+  const { auth } = useSelector((store) => store);
+  const handleCloseSnakbar=()=>setOpenSnackBar(false);
+  useEffect(()=>{
+    if(jwt){
+      dispatch(getUser(jwt))
+    }
+  
+  },[jwt])
+  
+  
+    useEffect(() => {
+      if (auth.user || auth.error) setOpenSnackBar(true)
+    }, [auth.user]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    
+    const userData={
+      email: data.get("email"),
+      password: data.get("password"),
+     
+    }
+    console.log("login user",userData);
+  
+    dispatch(login(userData));
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                                Email address
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                />
-                            </div>
-                        </div>
+  };
 
-                        <div>
-                            <div className="flex items-center justify-between">
-                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Password
-                                </label>
-                                <div className="text-sm">
-                                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Forgot password?
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="mt-2">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                />
-                            </div>
-                        </div>
+  return (
+    <React.Fragment className=" shadow-lg ">
+      <form className="w-full" onSubmit={handleSubmit}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <TextField
+              required
+              id="email"
+              name="email"
+              label="Email"
+              fullWidth
+              autoComplete="given-name"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              required
+              id="password"
+              name="password"
+              label="Password"
+              fullWidth
+              autoComplete="given-name"
+              type="password"
+            />
+          </Grid>
 
-                        <div>
-                            <button
-                                type="submit"
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Login in
-                            </button>
-                        </div>
-                    </form>
-
-                    <p className="mt-10 text-center text-sm text-gray-500">
-                        Not a member?{' '}
-                        <Link to ="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                            Sign up Now
-                        </Link>
-                    </p>
-                </div>
-            </div>
-        </>
-    )
+          <Grid item xs={12}>
+            <Button
+              className="bg-[#9155FD] w-full"
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{padding:".8rem 0"}}
+            >
+              Login
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+      <div className="flex justify-center flex-col items-center">
+         <div className="py-3 flex items-center">
+        <p className="m-0 p-0">don't have account ?</p>
+        <Button onClick={()=> navigate("/register")} className="ml-5" size="small">
+          Register
+        </Button>
+        </div>
+      </div>
+      <Snackbar open={openSnackBar} autoHideDuration={6000} onClose={handleCloseSnakbar}>
+        <Alert onClose={handleCloseSnakbar} severity="success" sx={{ width: '100%' }}>
+          {auth.error?auth.error:auth.user?"Register Success":""}
+        </Alert>
+      </Snackbar>
+    </React.Fragment>
+  );
 }
