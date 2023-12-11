@@ -2,7 +2,7 @@ import logoCompany from "../../../assets/OIP.jpeg"
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { NavLink, useNavigate } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 
 import navigation from "./NavbarData"
 import { useSelector } from 'react-redux';
@@ -135,14 +135,14 @@ export default function Navbar() {
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                    <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
                       Sign in
-                    </a>
+                    </Link>
                   </div>
                   <div className="flow-root">
-                    <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                    <Link to="/signup" className="-m-2 block p-2 font-medium text-gray-900">
                       Create account
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -303,13 +303,13 @@ export default function Navbar() {
               
 
                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                  <Link to="/login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Sign in
-                  </a>
+                  </Link>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                  <Link to="/signup" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Create account
-                  </a>
+                  </Link>
                 </div >
                 ): (
                   <div>notloggedint</div>

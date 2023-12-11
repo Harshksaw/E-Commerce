@@ -7,6 +7,8 @@ import Product from '../components/Product/Product';
 import Cart from '../pages/Cart';
 import CheckoutPage from '../components/checkout/CheckoutPage';
 import Home from '../pages/Home';
+import Signup from '../components/Auth/Signup';
+import Login from '../components/Auth/Login';
 
 
 const CustomerRouters =()=> {
@@ -23,8 +25,16 @@ const CustomerRouters =()=> {
 
                 <Route path="/product" element={<Product />} />
                 <Route path="/productdetails" element={<ProductDetails />} />
+
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+
+
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
+
+
+           
 
 
             </Routes>

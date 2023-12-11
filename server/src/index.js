@@ -1,26 +1,47 @@
+const express=require("express")
+const cors=require('cors');
 
-const express = require("express")
-const cors = require("cors")
-
-const app = express();
+const app=express();
 
 app.use(express.json())
 app.use(cors())
 
-app.get("/", (req, res) => {
-    return res.status(200).send({ message: "Welcome to ecommerce api {PORT}", status: true })
-
-
+app.get("/",(req,res)=>{
+    return res.status(200).send({message:"welcome to ecommerce api - node"})
 })
 
-const authRouters = require("./routes/auth.route.js")
+const authRouter=require("./routes/auth.routes.js")
+app.use("/auth",authRouter)
 
-app.use("/api/auth", authRouters)
+const userRouter=require("./routes/user.routes.js");
+app.use("/api/users",userRouter)
 
-const userRouters = require("./routes/user.route.js")
+const productRouter=require("./routes/product.routes.js");
+app.use("/api/products",productRouter);
 
-app.use("/users", userRouters);
+const adminProductRouter=require("./routes/product.admin.routes.js");
+app.use("/api/admin/products",adminProductRouter);
 
+const cartRouter=require("./routes/cart.routes.js")
+app.use("/api/cart", cartRouter);
 
-module.exports = app;
+const cartItemRouter=require("./routes/cartItem.routes.js")
+app.use("/api/cart_items",cartItemRouter);
 
+const orderRouter=require("./routes/order.routes.js");
+app.use("/api/orders",orderRouter);
+
+const paymentRouter=require("./routes/payment.routes.js");
+app.use('/api/payments',paymentRouter)
+
+const reviewRouter=require("./routes/review.routes.js");
+app.use("/api/reviews",reviewRouter);
+
+const ratingRouter=require("./routes/rating.routes.js");
+app.use("/api/ratings",ratingRouter);
+
+// admin routes handler
+const adminOrderRoutes=require("./routes/adminOrder.routes.js");
+app.use("/api/admin/orders",adminOrderRoutes);
+
+module.exports={app};

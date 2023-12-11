@@ -1,15 +1,8 @@
-const app = require(".");
-const connectDB = require("../config/db");
+const { app } = require(".");
+const { connectDb } = require("./config/db");
 
-const PORT = 5180;
-
-(async () => {
-    try {
-        await connectDB();
-        app.listen(PORT, () => {
-            console.log("Ecommerce listening on port:", PORT);
-        });
-    } catch (error) {
-        console.error('Error starting the server:', error);
-    }
-})();
+const PORT=5180;
+app.listen(PORT,async ()=>{
+    await connectDb()
+    console.log("ecommerce api listing on port ",PORT)
+})
