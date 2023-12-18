@@ -1,11 +1,11 @@
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState } from "react";
 
 import axios from "axios";
 import { server } from "../../server";
-import styles from "../../styles/style";
+import styles from "../../styles/style"
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const LoginPage = () => {
   const navigate = useNavigate();

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import HomePage from "./Pages/HomePage"
 import LoginPage from "./components/login/LoginPage"
+import SignUpPage from "./components/signup/SignupPage"
 
 const App = () => {
 
