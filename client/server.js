@@ -1,0 +1,1 @@
+export const server ='https://laughing-space-sniffle-qrgjvqpvg6h5x9-8000.app.github.dev/api/v2'
