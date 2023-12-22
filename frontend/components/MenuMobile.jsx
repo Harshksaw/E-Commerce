@@ -26,12 +26,12 @@ const MenuMobile = ({showCatMenu ,setShowCatMenu ,setMobileMenu }) => {
             <React.Fragment  key={item.id}>
                 {!!item?.subMenu ? 
                 (
-                    <li className="cursor-pointer flex items-center gap-2 relative border-b flex-col  px-5 py-4 "
+                    <li className="cursor-pointer flex justify-center gap-2 relative border-b flex-col  px-5 py-4 "
                     onClick={() => setShowCatMenu(!showCatMenu)} // Toggle showCatMenu on click
                     
                     >
-                        <div className ='flex items-center justify-center'>
-                            {item.name}
+                        <div className ='flex '>
+                            {item.name} 
 
                             <BsChevronDown size={12}/>
                         </div>

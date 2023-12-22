@@ -27,7 +27,7 @@ const Menu = ({showCatMenu, setShowCatMenu}) => {
                     <li className="cursor-pointer flex items-center gap-2 relative"
                     onMouseEnter = {() => setShowCatMenu(true)}
                     
-                    onmouseleave = {()=>setShowCatMenu(false)}
+                    onMouseLeave = {()=>setShowCatMenu(false)}
                     >
                         {item.name}
                         <BsChevronDown size={12}/>
