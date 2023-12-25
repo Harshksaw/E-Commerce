@@ -768,6 +768,109 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCC extends Schema.CollectionType {
+  collectionName: 'cs';
+  info: {
+    singularName: 'c';
+    pluralName: 'cs';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::c.c', 'name'>;
+    products: Attribute.Relation<
+      'api::c.c',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::c.c', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::c.c', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    stripeId: Attribute.String;
+    products: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.Decimal;
+    subtitle: Attribute.String;
+    orignal_price: Attribute.Decimal;
+    description: Attribute.Blocks;
+    size: Attribute.JSON;
+    image: Attribute.Media;
+    thumbnail: Attribute.Media;
+    slug: Attribute.UID<'api::product.product', 'name'>;
+    category: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::c.c'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -786,6 +889,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::c.c': ApiCC;
+      'api::order.order': ApiOrderOrder;
+      'api::product.product': ApiProductProduct;
     }
   }
 }
