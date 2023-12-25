@@ -2,7 +2,9 @@ import { HeroBanner } from "@/components/HeroBanner";
 import ProductCard from "@/components/ProductCard.jsx";
 import Wrapper from "@/components/Wrapper";
 import { mens_kurta } from "@/public/dummy";
-import { useEffect } from "react";
+import fetchDataFromApi from "@/utils/api";
+import { useEffect, useState } from "react";
+
 
 export default function Home() {
 
