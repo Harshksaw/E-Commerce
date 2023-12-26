@@ -17,7 +17,7 @@ const subMenuData = [
     { id: 4, name: "Football shoes", doc_count: 107 },
 ];
 
-const MenuMobile = ({showCatMenu ,setShowCatMenu ,setMobileMenu }) => { 
+const MenuMobile = ({showCatMenu ,setShowCatMenu ,setMobileMenu ,categories}) => { 
 //   const [showCatMenu, setShowCatMenu] = useState(false); // Added state for showCatMenu
 
   return (
@@ -40,24 +40,28 @@ const MenuMobile = ({showCatMenu ,setShowCatMenu ,setMobileMenu }) => {
                         && 
                         (
                             <ul className='bg-black/[0/05] -mx-5 mt-4 -mb-4'>
-                                {subMenuData.map((subMenu)=>{
-                                    return(
-                                        <Link href="/" key={subMenu.id} 
-                                        onClick ={()=>
-                                            {
-                                            setShowCatMenu(false) 
-                                            setMobileMenu(false)
-                                            }}>
-
-                                            <li 
-                                            className='py-4 px-9 border-5 flex justify-between'>
-
-                                                {subMenu.name}
-                                                <span className='opacity-60 text-sm'>count2</span>
-                                            </li>
-                                        </Link>
-                                    )
-                                })}
+                               {categories?.map(
+                                            ({ attributes: c, id }) => {
+                                                return (
+                                                    <Link
+                                                        key={id}
+                                                        href={`/category/${c.slug}`}
+                                                        onClick={() =>
+                                                            setShowCatMenu(
+                                                                false
+                                                            )
+                                                        }
+                                                    >
+                                                        <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+                                                            {c.name}
+                                                            <span className="opacity-50 text-sm">
+                                                                {`(${c.products.data.length})`}
+                                                            </span>
+                                                        </li>
+                                                    </Link>
+                                                );
+                                            }
+                                        )}
                             </ul>
                         )
                         }

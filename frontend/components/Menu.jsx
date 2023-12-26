@@ -14,7 +14,7 @@ const subMenuData = [
     { id: 3, name: "Running shoes", doc_count: 64 },
     { id: 4, name: "Football shoes", doc_count: 107 },
 ];
-const Menu = ({showCatMenu, setShowCatMenu}) => {
+const Menu = ({showCatMenu, setShowCatMenu , categories}) => {
   return (
     <ul className='hidden md:flex item-center gap-8 font-medium text-gray-600'>
         {data.map((item) => (
@@ -35,18 +35,28 @@ const Menu = ({showCatMenu, setShowCatMenu}) => {
                         && 
                         (
                             <ul className='bg-white absolute top-6 left-0 min-w-[250px] px-1 text-black shadow-lg'>
-                                {subMenuData.map((subMenu)=>{
-                                    return(
-                                        <Link href="/" key={subMenu.id} onClick ={()=>setShowCatMenu(false)}>
-
-                                            <li className='h-12 px-3 flex justify-between items-center hover:bg-black/[0.03] rounded-md'>
-
-                                                {subMenu.name}
-                                                <span className='opacity-60 text-sm'>count2</span>
-                                            </li>
-                                        </Link>
-                                    )
-                                })}
+                                {categories?.map(
+                                            ({ attributes: c, id }) => {
+                                                return (
+                                                    <Link
+                                                        key={id}
+                                                        href={`/category/${c.slug}`}
+                                                        onClick={() =>
+                                                            setShowCatMenu(
+                                                                false
+                                                            )
+                                                        }
+                                                    >
+                                                        <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+                                                            {c.name}
+                                                            <span className="opacity-50 text-sm">
+                                                                {`(${c.products.data.length})`}
+                                                            </span>
+                                                        </li>
+                                                    </Link>
+                                                );
+                                            }
+                                        )}
                             </ul>
                         )
                         }
