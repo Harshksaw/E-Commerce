@@ -36,7 +36,7 @@ const Header = () => {
     }
     setLastScrollY(window.scrollY);
   };
-
+  // scrollheader
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
     return () => {
@@ -49,7 +49,7 @@ const Header = () => {
   },[])
 
   const fetchCategories = async () =>{
-    const {data} = await fetchDataFromApi('/api/cs?populate=*')
+    const {data} = await fetchDataFromApi('/api/categories?populate=*')
     setCategories(data)
   }
 

@@ -768,12 +768,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiCC extends Schema.CollectionType {
-  collectionName: 'cs';
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
   info: {
-    singularName: 'c';
-    pluralName: 'cs';
-    displayName: 'Category';
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'category';
     description: '';
   };
   options: {
@@ -781,18 +781,26 @@ export interface ApiCC extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'api::c.c', 'name'>;
+    slug: Attribute.UID<'api::category.category', 'name'>;
     products: Attribute.Relation<
-      'api::c.c',
+      'api::category.category',
       'manyToMany',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::c.c', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::c.c', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -802,7 +810,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   info: {
     singularName: 'order';
     pluralName: 'orders';
-    displayName: 'Order';
+    displayName: 'order';
   };
   options: {
     draftAndPublish: true;
@@ -833,26 +841,25 @@ export interface ApiProductProduct extends Schema.CollectionType {
   info: {
     singularName: 'product';
     pluralName: 'products';
-    displayName: 'Product';
-    description: '';
+    displayName: 'product';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    price: Attribute.Decimal;
     subtitle: Attribute.String;
-    orignal_price: Attribute.Decimal;
-    description: Attribute.Blocks;
+    price: Attribute.Decimal & Attribute.Required;
+    description: Attribute.RichText;
     size: Attribute.JSON;
     image: Attribute.Media;
-    thumbnail: Attribute.Media;
+    thumbnail: Attribute.Media & Attribute.Required;
+    original_price: Attribute.Decimal;
     slug: Attribute.UID<'api::product.product', 'name'>;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::product.product',
       'manyToMany',
-      'api::c.c'
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -890,7 +897,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::c.c': ApiCC;
+      'api::category.category': ApiCategoryCategory;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
     }

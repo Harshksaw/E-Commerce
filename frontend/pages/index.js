@@ -7,15 +7,11 @@ import { useEffect, useState } from "react";
 
 
 export default function Home({products}) {
-  console.log(products.data)
+  console.log(products?.data)
 
 
-  useEffect(() => {
-    fetchDataFromApi("api/products?populate=*").then((data) => {
-      console.log(data);
-    })
-  },[])
 
+  
  
   return (
     <main>
@@ -57,6 +53,6 @@ export async function getStaticProps() {
   const products = await fetchDataFromApi("/api/products?populate=*");
 
   return {
-      props: { products },
+      props: { products : products},
   };
 }

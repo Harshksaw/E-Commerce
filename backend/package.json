@@ -9,7 +9,6 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-cloud": "4.16.2",
     "@strapi/plugin-i18n": "4.16.2",
@@ -20,13 +19,14 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "stripe": "^14.10.0",
     "styled-components": "5.3.3"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "6278dc5f-d796-4fd8-8ed8-bd55f3653448"
+    "uuid": "0bdf5312-553c-4318-b583-0bf86f383223"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
