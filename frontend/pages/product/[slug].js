@@ -2,45 +2,32 @@ import React, { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "@/components/Wrapper";
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
-// import RelatedProducts from "@/components/RelatedProducts";
-// import { fetchDataFromApi } from "@/utils/api";
-// import { getDiscountedPricePercentage } from "@/utils/helper";
+
+import { fetchDataFromApi } from "@/utils/api";
+import { getDiscountedPricePercentage } from "@/utils/helper";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RelatedProducts from "@/components/RelatedProducts";
 
-const dummyProduct = {
-  name: "Dummy Product",
-  subtitle: "Lorem ipsum dolor sit amet",
-  price: 100,
-  original_price: 120,
-  size: {
-    data: [
-      { size: "S", enabled: true },
-      { size: "M", enabled: true },
-      { size: "L", enabled: false },
-    ],
-  },
-  image: {
-    data: ["image1.jpg", "image2.jpg", "image3.jpg"],
-  },
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-};
 
-const ProductDetails = ({ p = dummyProduct, products }) => {
-  const notify = () => {
-    toast.success("Success. Check your cart!", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  };
+
+const ProductDetails = ({ product, products }) => {
+
+  const p = product?.data?.[0]?.attributes
+  console.log(p?.image?.data)
+  // const notify = () => {
+  //   toast.success("Success. Check your cart!", {
+  //     position: "bottom-right",
+  //     autoClose: 5000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "dark",
+  //   });
+  // };
 
   return (
     <div className="w-full md:py-20">
@@ -49,8 +36,8 @@ const ProductDetails = ({ p = dummyProduct, products }) => {
         <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
           {/* left column start */}
           <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
-            {/* <ProductDetailsCarousel images={p.image.data} /> */}
-            <ProductDetailsCarousel />
+
+            <ProductDetailsCarousel images={p?.image?.data} />
           </div>
           {/* left column end */}
 
@@ -58,11 +45,11 @@ const ProductDetails = ({ p = dummyProduct, products }) => {
           <div className="flex-[1] py-3">
             {/* PRODUCT TITLE */}
             <div className="text-[34px] font-semibold mb-2 leading-tight">
-              {/* {p.name} */}
+              {p.name}
             </div>
 
             {/* PRODUCT SUBTITLE */}
-            {/* <div className="text-lg font-semibold mb-5">{p.subtitle}</div> */}
+            <div className="text-lg font-semibold mb-5">{p.subtitle}</div>
 
             {/* PRODUCT PRICE */}
             <div className="flex items-center">
@@ -75,7 +62,7 @@ const ProductDetails = ({ p = dummyProduct, products }) => {
                     &#8377;{p.original_price}
                   </p>
                   <p className="ml-auto text-base font-medium text-green-500">
-                    {/* {getDiscountedPricePercentage(p.original_price, p.price)}% */}
+                    {getDiscountedPricePercentage(p.original_price, p.price)}%
                     off
                   </p>
                 </>
@@ -156,7 +143,7 @@ const ProductDetails = ({ p = dummyProduct, products }) => {
         </div>
 
         {/* <RelatedProducts products={products} /> */}
-        <RelatedProducts />
+        {/* <RelatedProducts /> */}
       </Wrapper>
     </div>
   );
@@ -164,32 +151,32 @@ const ProductDetails = ({ p = dummyProduct, products }) => {
 
 export default ProductDetails;
 
-// export async function getStaticPaths() {
-//     const products = await fetchDataFromApi("/api/products?populate=*");
-//     const paths = products?.data?.map((p) => ({
-//         params: {
-//             slug: p.attributes.slug,
-//         },
-//     }));
+export async function getStaticPaths() {
+    const products = await fetchDataFromApi("/api/products?populate=*");
+    const paths = products?.data?.map((p) => ({
+        params: {
+            slug: p.attributes.slug,
+        },
+    }));
 
-//     return {
-//         paths,
-//         fallback: false,
-//     };
-// }
+    return {
+        paths,
+        fallback: false,
+    };
+}
 
-// export async function getStaticProps({ params: { slug } }) {
-//     const product = await fetchDataFromApi(
-//         `/api/products?populate=*&filters[slug][$eq]=${slug}`
-//     );
-//     const products = await fetchDataFromApi(
-//         `/api/products?populate=*&[filters][slug][$ne]=${slug}`
-//     );
+export async function getStaticProps({ params: { slug } }) {
+    const product = await fetchDataFromApi(
+        `/api/products?populate=*&filters[slug][$eq]=${slug}`
+    );
+    const products = await fetchDataFromApi(
+        `/api/products?populate=*&[filters][slug][$ne]=${slug}`
+    );
 
-//     return {
-//         props: {
-//             product,
-//             products,
-//         },
-//     };
-// }
+    return {
+        props: {
+            product,
+            products,
+        },
+    };
+}

@@ -3,7 +3,21 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import pic1 from "../public/p1.png";
 import Image from "next/image";
-const ProductDetailsCarousel = () => {
+const ProductDetailsCarousel = ({images}) => {
+  console.log(images, "images");
+  console.log(images[0].attributes?.url, "imagesurl")
+
+     {images?.map((imageid)=>{
+          
+
+        console.log("imageurl" ,imageid?.id)
+
+
+
+        })} 
+
+
+
   return (
     <div className="text-black text-[20px] w-full max-w-[1360px] mx-auto sticky top-[50px]">
       <Carousel
@@ -13,12 +27,14 @@ const ProductDetailsCarousel = () => {
         thumbWidth={60}
         className="productCarousel"
       >
-        <img src="/p2.png" />
-        <img src="/p3.png" />
-        <img src="/p4.png" />
-        <img src="/p5.png" />
-        <img src="/p6.png" />
-        <img src="/p7.png" />
+
+            {images?.map((img) => (
+                    <img
+                        key={img.id}
+                        src={img.attributes.url}
+                        alt={img.attributes.name}
+                    />
+                ))}
       </Carousel>
     </div>
   );

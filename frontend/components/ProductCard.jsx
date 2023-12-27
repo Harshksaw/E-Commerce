@@ -5,7 +5,7 @@ import React from "react";
 const ProductCard = ({ data: { attributes: p, id } }) => {
 
 
-  console.log(p)
+//   console.log(p)
   
 
     return (
