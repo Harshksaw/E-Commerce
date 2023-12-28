@@ -18,7 +18,7 @@ const subMenuData = [
 ];
 
 const MenuMobile = ({showCatMenu ,setShowCatMenu ,setMobileMenu ,categories}) => { 
-//   const [showCatMenu, setShowCatMenu] = useState(false); // Added state for showCatMenu
+
 
   return (
     <ul className='md:hidden flex flex-col gap-4 font-medium text-gray-600 absolute top-[50px] left-0 w-full h-[calc(100vh-50px)] bg-white border-t '>

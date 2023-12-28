@@ -7,9 +7,9 @@ const Footer = () => {
     return (
         <footer className="bg-black text-white pt-14 pb-3">
             <Wrapper className="flex justify-between flex-col md:flex-row gap-[50px] md:gap-0">
-                {/* LEFT START */}
+
                 <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] flex-col md:flex-row">
-                    {/* MENU START */}
+
                     <div className="flex flex-col gap-3 shrink-0">
                         <div className="font-oswald font-medium uppercase text-sm cursor-pointer">
                             Find a store
@@ -27,11 +27,11 @@ const Footer = () => {
                             student discount
                         </div>
                     </div>
-                    {/* MENU END */}
 
-                    {/* NORMAL MENU START */}
+
+
                     <div className="flex gap-[50px] md:gap-[75px] lg:gap-[100px] shrink-0">
-                        {/* MENU START */}
+
                         <div className="flex flex-col gap-3">
                             <div className="font-oswald font-medium uppercase text-sm">
                                 get help
@@ -52,9 +52,9 @@ const Footer = () => {
                                 Contact Us
                             </div>
                         </div>
-                        {/* MENU END */}
 
-                        {/* MENU START */}
+
+
                         <div className="flex flex-col gap-3">
                             <div className="font-oswald font-medium uppercase text-sm">
                                 About nike
@@ -72,13 +72,13 @@ const Footer = () => {
                                 Sustainability
                             </div>
                         </div>
-                        {/* MENU END */}
-                    </div>
-                    {/* NORMAL MENU END */}
-                </div>
-                {/* LEFT END */}
 
-                {/* RIGHT START */}
+                    </div>
+
+                </div>
+
+
+
                 <div className="flex gap-4 justify-center md:justify-start">
                     <div
                         onClick={() =>
@@ -101,16 +101,16 @@ const Footer = () => {
                         <FaInstagram size={20} />
                     </div>
                 </div>
-                {/* RIGHT END */}
+
             </Wrapper>
             <Wrapper className="flex justify-between mt-10 flex-col md:flex-row gap-[10px] md:gap-0">
-                {/* LEFT START */}
+
                 <div className="text-[12px] text-white/[0.5] hover:text-white cursor-pointer text-center md:text-left">
                     © 2023 Nike, Inc. All Rights Reserved
                 </div>
-                {/* LEFT END */}
 
-                {/* RIGHT START */}
+
+
                 <div className="flex gap-2 md:gap-5 text-center md:text-left flex-wrap justify-center">
                     <div className="text-[12px] text-white/[0.5] hover:text-white cursor-pointer">
                         Guides
@@ -125,7 +125,7 @@ const Footer = () => {
                         Privacy Policy
                     </div>
                 </div>
-                {/* RIGHT END */}
+
             </Wrapper>
         </footer>
     );

@@ -1,12 +1,14 @@
-import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+
 import { BiArrowBack, BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
+
+import { Carousel } from "react-responsive-carousel";
+import React from "react";
 
 export const HeroBanner = () => {
   const arrowStyles = {"position":"absolute","zIndex":2,"top":"calc(50% - 15px)","width":30,"height":30,"cursor":"pointer","borderRadius":"50%","backgroundColor":"rgba(0,0,0,0.5)","display":"flex","alignItems":"center","justifyContent":"center" ,"color":"yellow"}
   return (
-    <div className="relative relative text-white text-[20px] w-full max-w-[1360px] mx-auto">
+    <div className="relative text-white text-[20px] w-full max-w-[1360px] mx-auto">
       <Carousel
       autoPlay = {true}
       infiniteLoop ={true}

@@ -1,8 +1,4 @@
-
 import { API_URL, STRAPI_API_TOKEN } from "./urls";
-
-
-console.log(API_URL)
 
 export const fetchDataFromApi = async (endpoint) => {
     const options = {
@@ -17,4 +13,4 @@ export const fetchDataFromApi = async (endpoint) => {
 
     return data;
 };
-export default fetchDataFromApi;
+
