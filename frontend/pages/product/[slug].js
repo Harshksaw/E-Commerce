@@ -1,15 +1,19 @@
-import React, { useState } from "react";
-import { IoMdHeartEmpty } from "react-icons/io";
-import Wrapper from "@/components/Wrapper";
-import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
+import "react-toastify/dist/ReactToastify.css";
 
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import {useDispatch, useSelector} from 'react-redux'
+
+import { IoMdHeartEmpty } from "react-icons/io";
+import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
+import  ReactMarkdown from "react-markdown"
+import RelatedProducts from "@/components/RelatedProducts"
+import Wrapper from "@/components/Wrapper";
 import { fetchDataFromApi } from "@/utils/api";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import RelatedProducts from "@/components/RelatedProducts"
-import  ReactMarkdown from "react-markdown"
+import { addToCart} from "@/Store/slices/cartSlice"
+
 
 
 const ProductDetails = ({ product, products }) => {
@@ -126,6 +130,8 @@ const ProductDetails = ({ product, products }) => {
                     block: "center",
                     behavior: "smooth",
                   });
+                }else{
+                  useDispatch(addToCart())
                 }
               }}
             >

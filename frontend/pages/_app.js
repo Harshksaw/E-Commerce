@@ -1,11 +1,10 @@
 import "@/styles/globals.css";
-import Head from "next/head";
 
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-
-
+import Head from "next/head";
+import Header from "@/components/Header";
+import { Provider } from 'react-redux'
+import store from '../Store/store'
 
 export default function App({ Component, pageProps }) {
     return (
@@ -33,9 +32,11 @@ export default function App({ Component, pageProps }) {
                 />
             </Head>
 
-                <Header />
-                <Component {...pageProps} />
-                <Footer />
+                <Provider store={store}>
+                    <Header />
+                    <Component {...pageProps} />
+                    <Footer />
+                </Provider>
 
         </>
     );
