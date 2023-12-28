@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { getDiscountedPricePercentage } from "@/utils/helper";
+import { getDiscountedPricePercentage } from "../utils/helper";
 const ProductCard = ({ data: { attributes: p, id } }) => {
 
 

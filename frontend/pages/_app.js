@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer";
 import Head from "next/head";
-import Header from "@/components/Header";
+import Header from "../components/Header";
 import { Provider } from 'react-redux'
 import {store} from '../store/store.js'
 

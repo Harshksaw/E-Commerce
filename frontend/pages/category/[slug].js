@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Wrapper from "@/components/Wrapper";
-import ProductCard from "@/components/ProductCard";
-import { fetchDataFromApi } from "@/utils/api";
+import Wrapper from "../../components/Wrapper";
+import ProductCard from "../../components/ProductCard";
+import { fetchDataFromApi } from "../../utils/api";
 
 
 import useSWR from "swr";
@@ -24,7 +24,7 @@ const Category = ({ category, products, slug }) => {
             fallbackData : products
         }
     )
-    // console.log(data.meta.pagination.total)
+
 
 
 
@@ -47,9 +47,9 @@ const Category = ({ category, products, slug }) => {
                     ))}
 
                 </div>
-                {/* products grid end */}
 
-                {/* PAGINATION BUTTONS END */}
+
+
                 {data?.meta?.pagination?.total > maxResult && (
                     <div className="flex gap-3 items-center justify-center my-16 md:my-0">
                         <button
@@ -76,7 +76,7 @@ const Category = ({ category, products, slug }) => {
                         </button>
                     </div>
                 )}
-                {/* PAGINATION BUTTONS END */}
+
                 {isLoading && (
                     <div className="absolute top-0 left-0 w-full h-full bg-white/[0.5] flex flex-col gap-5 justify-center items-center">
                         <img src="/logo.svg" width={150} />
