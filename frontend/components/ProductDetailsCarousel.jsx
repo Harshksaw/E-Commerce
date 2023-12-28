@@ -4,17 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import pic1 from "../public/p1.png";
 import Image from "next/image";
 const ProductDetailsCarousel = ({images}) => {
-  console.log(images, "images");
-  console.log(images[0].attributes?.url, "imagesurl")
 
-     {images?.map((imageid)=>{
-          
-
-        console.log("imageurl" ,imageid?.id)
-
-
-
-        })} 
 
 
 
