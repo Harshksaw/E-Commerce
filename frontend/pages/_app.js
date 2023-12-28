@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Head from "next/head";
 import Header from "@/components/Header";
 import { Provider } from 'react-redux'
-import store from '../Store/store'
+import {store} from '../store/store.js'
 
 export default function App({ Component, pageProps }) {
     return (

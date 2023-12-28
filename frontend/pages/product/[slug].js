@@ -9,21 +9,36 @@ import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
 import  ReactMarkdown from "react-markdown"
 import RelatedProducts from "@/components/RelatedProducts"
 import Wrapper from "@/components/Wrapper";
+import { addToCart } from "@/store/slices/cartSlice"
 import { fetchDataFromApi } from "@/utils/api";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 
-import { addToCart} from "@/Store/slices/cartSlice"
-
-
-
 const ProductDetails = ({ product, products }) => {
+  const dispatch = useDispatch()
 
-  const p = product?.data?.[0]?.attributes
+    const p = product?.data?.[0]?.attributes
+
+   
+
+
+
 
 
   const [selectedSize, setSelectedSize] = useState();
   const [showError ,setShowError] = useState(false);
 
+  const notify = ()=>{
+    toast.success('Success , Check your cart', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+  }
 
   return (
     <div className="w-full md:py-20">
@@ -131,7 +146,16 @@ const ProductDetails = ({ product, products }) => {
                     behavior: "smooth",
                   });
                 }else{
-                  useDispatch(addToCart())
+                  dispatch(
+                    addToCart(
+                    {
+
+                      ...products?.data?.[0],
+                      selectedSize,
+                      oneQuantityPrice: p.price,
+                    }
+                  ))
+                  notify()
                 }
               }}
             >
