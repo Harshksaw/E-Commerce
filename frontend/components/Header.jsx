@@ -74,7 +74,7 @@ const Header = () => {
         )}
 
         <div className="flex items-center gap-2 text-black">
-          {/* Icon start */}
+
 
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
             <IoMdHeartEmpty className="text-[19px] md:text-[24px]" />

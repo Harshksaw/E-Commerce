@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Wrapper from "../../components/Wrapper";
-import ProductCard from "../../components/ProductCard";
-import { fetchDataFromApi } from "../../utils/api";
+import Wrapper from "../../../components/Wrapper";
+import ProductCard from "../../../components/ProductCard";
+import { fetchDataFromApi } from "../../../utils/api";
 
 
 import useSWR from "swr";

@@ -5,13 +5,13 @@ import { ToastContainer, toast } from "react-toastify";
 import {useDispatch, useSelector} from 'react-redux'
 
 import { IoMdHeartEmpty } from "react-icons/io";
-import ProductDetailsCarousel from "../../components/ProductDetailsCarousel";
+import ProductDetailsCarousel from "../../../components/ProductDetailsCarousel";
 import  ReactMarkdown from "react-markdown"
-import RelatedProducts from "../../components/RelatedProducts"
-import Wrapper from "../../components/Wrapper";
-import { addToCart } from "../../store/slices/cartSlice"
-import { fetchDataFromApi } from "../../utils/api";
-import { getDiscountedPricePercentage } from "../../utils/helper";
+import RelatedProducts from "../../../components/RelatedProducts"
+import Wrapper from "../../../components/Wrapper";
+import { addToCart } from "../../../store/slices/cartSlice"
+import { fetchDataFromApi } from "../../../utils/api";
+import { getDiscountedPricePercentage } from "../../../utils/helper";
 
 const ProductDetails = ({ product, products }) => {
   const dispatch = useDispatch()
