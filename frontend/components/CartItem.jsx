@@ -69,9 +69,10 @@ const CartItem = ({ data }) => {
                                 {p.size.data.map((item, i)=>{
                                     return (
                                         <option 
+
                                         key={i}
                                         disabled={!item.enabled ? true : false}
-                                        selected = {item.selectedSize === item.size}
+                                        defaultValue = {item.selectedSize === item.size}
                                         value={item.size}
                                         >{item.size}</option>
                                     )

@@ -10,7 +10,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import { makePaymentRequest } from "../utils/api";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
-const cart = () => {
+const Cart = () => {
   const {cartItems} = useSelector((state) => state.cart);
   const subTotal = useMemo(
     () =>{ 
@@ -22,19 +22,19 @@ const cart = () => {
 
   const handlePayment = async()=>{
     try {
-      const stripe = await stripePromise
+      setLoading(true);
+      const stripe = await stripePromise;
       const res = await makePaymentRequest("/api/orders", {
-        products: cartItems
-      })
+          products: cartItems,
+      });
       await stripe.redirectToCheckout({
-        sessionId: res.stripeSession.id,
-
-      })
+          sessionId: res.stripeSession.id,
+      });
     } catch (error) {
-      setLoading(false)
-      console.log(error)
-      
-    }
+
+      setLoading(false);
+      console.log(error);
+  }
   }
 
 
@@ -84,10 +84,10 @@ const cart = () => {
                   </div>
                 </div>
 
-                {/* BUTTON START */}
+
                 <button
                   className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
-
+                  onClick={handlePayment}
                 >
                   Checkout
                   {loading && <img src="/spinner.svg" />}
@@ -128,4 +128,4 @@ const cart = () => {
   );
 };
 
-export default cart;
+export default Cart;
