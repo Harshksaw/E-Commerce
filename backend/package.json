@@ -6,8 +6,8 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "build": "strapi build"
+
   },
   "dependencies": {
     "@strapi/plugin-i18n": "4.8.1",

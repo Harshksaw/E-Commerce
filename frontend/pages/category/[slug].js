@@ -98,7 +98,7 @@ export async function getStaticPaths() {
     const paths = category?.data?.map((c) => ({
 
         params: {
-            slug: String(c.attributes.slug),
+            slug: String(c?.attributes?.slug),
         },
     }));
 
@@ -110,7 +110,7 @@ export async function getStaticPaths() {
     };
 }
 
-// `getStaticPaths` requires using `getStaticProps`
+
 export async function getStaticProps({ params: { slug } }) {
     const category = await fetchDataFromApi(
         `/api/categories?filters[slug][$eq]=${slug}`
